@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    table tbody tr {
+        @apply transition-colors hover:bg-gray-50;
+    }
+
+    input[type='text'],
+    input[type='email'],
+    input[type='password'],
+    input[type='number'],
+    input[type='search'],
+    select,
+    textarea {
+        @apply focus:border-rootPrimary focus:ring-rootTeal;
+    }
+}
