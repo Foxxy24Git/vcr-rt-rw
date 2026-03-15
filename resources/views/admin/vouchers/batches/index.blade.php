@@ -5,8 +5,8 @@
         </h2>
     </x-slot>
 
-    <div class="py-8">
-        <div class="mx-auto max-w-7xl space-y-4 sm:px-6 lg:px-8">
+    <div class="py-4 sm:py-6 md:py-8">
+        <div class="mx-auto max-w-7xl space-y-4 px-3 sm:px-6 lg:px-8">
             <div class="rounded-lg bg-white p-4 shadow-sm">
                 <form method="GET" action="{{ route('admin.voucher-batches.index') }}" class="grid gap-3 md:grid-cols-3">
                     <div>

@@ -19,14 +19,14 @@
             @include('layouts.navigation')
 
             @isset($header)
-                <header class="bg-white shadow">
-                    <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+                <header class="bg-white shadow-sm transition-shadow duration-200">
+                    <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-6 lg:px-8">
                         {{ $header }}
                     </div>
                 </header>
             @endisset
 
-            <main>
+            <main class="px-4 sm:px-6 lg:px-8">
                 @hasSection('content')
                     @yield('content')
                 @else

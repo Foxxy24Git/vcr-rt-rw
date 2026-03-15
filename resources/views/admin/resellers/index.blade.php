@@ -1,26 +1,26 @@
 <x-dashboard-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold leading-tight text-gray-800">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h2 class="text-lg font-semibold leading-tight text-gray-800 sm:text-xl">
                 Manajemen Reseller
             </h2>
 
-            <a href="{{ route('admin.resellers.create') }}" class="rounded-xl bg-rootPrimary px-4 py-2 text-sm font-medium text-white hover:bg-rootIndigo">
+            <a href="{{ route('admin.resellers.create') }}" class="inline-block w-full rounded-xl bg-rootPrimary px-4 py-2 text-center text-sm font-medium text-white shadow-sm transition duration-200 hover:bg-rootIndigo hover:shadow-md md:w-auto">
                 + Tambah Reseller
             </a>
         </div>
     </x-slot>
 
-    <div class="py-8">
-        <div class="mx-auto max-w-7xl space-y-4 sm:px-6 lg:px-8">
+    <div class="py-4 sm:py-6 md:py-8">
+        <div class="mx-auto max-w-7xl space-y-4 px-3 sm:px-6 lg:px-8">
             @if (session('status'))
                 <div class="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
                     {{ session('status') }}
                 </div>
             @endif
 
-            <div class="rounded-lg bg-white p-4 shadow-sm">
-                <form method="GET" action="{{ route('admin.resellers.index') }}" class="grid gap-3 md:grid-cols-3">
+            <div class="rounded-lg bg-white p-4 shadow-sm transition-shadow duration-200 hover:shadow-md md:p-6">
+                <form method="GET" action="{{ route('admin.resellers.index') }}" class="grid grid-cols-1 gap-3 md:grid-cols-3">
                     <div>
                         <x-input-label for="search" value="Cari nama/email/telepon" />
                         <x-text-input id="search" name="search" type="text" class="mt-1 block w-full" :value="$search" />
@@ -35,20 +35,20 @@
                         </select>
                     </div>
 
-                    <div class="flex items-end gap-2">
-                        <button type="submit" class="rounded-xl bg-rootPrimary px-4 py-2 text-sm text-white hover:bg-rootIndigo">
+                    <div class="flex flex-wrap items-end gap-2">
+                        <button type="submit" class="w-full rounded-xl bg-rootPrimary px-4 py-2 text-sm text-white shadow-sm transition duration-200 hover:bg-rootIndigo hover:shadow-md md:w-auto">
                             Filter
                         </button>
-                        <a href="{{ route('admin.resellers.index') }}" class="rounded-xl border border-rootPrimary px-4 py-2 text-sm text-rootPrimary hover:bg-rootPink/20">
+                        <a href="{{ route('admin.resellers.index') }}" class="w-full rounded-xl border border-rootPrimary px-4 py-2 text-center text-sm text-rootPrimary transition duration-200 hover:bg-rootPink/20 md:w-auto">
                             Reset
                         </a>
                     </div>
                 </form>
             </div>
 
-            <div class="overflow-hidden rounded-xl bg-white shadow-sm">
+            <div class="overflow-hidden rounded-xl bg-white shadow-sm transition-shadow duration-200 hover:shadow-md">
                 <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200 text-sm">
+                    <table class="min-w-full divide-y divide-gray-200 text-xs sm:text-sm">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="px-4 py-3 text-left font-semibold text-gray-700">Reseller</th>

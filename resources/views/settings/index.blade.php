@@ -1,12 +1,12 @@
 <x-dashboard-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+        <h2 class="text-lg font-semibold leading-tight text-gray-800 sm:text-xl">
             {{ __('System Settings') }}
         </h2>
     </x-slot>
 
-    <div class="py-8">
-        <div class="mx-auto max-w-2xl space-y-6 px-4 sm:px-6 lg:px-8">
+    <div class="py-4 sm:py-6 md:py-8">
+        <div class="mx-auto max-w-2xl space-y-4 px-3 sm:space-y-6 sm:px-6 lg:px-8">
             @if (session('status'))
                 <div class="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
                     {{ session('status') }}
@@ -24,7 +24,7 @@
                 </div>
             @endif
 
-            <div class="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+            <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-shadow duration-200 hover:shadow-md md:p-6">
                 <form method="POST" action="{{ route('settings.update') }}" class="space-y-6">
                     @csrf
 
@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="flex justify-end border-t border-gray-200 pt-4">
-                        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        <button type="submit" class="w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-white shadow-sm transition duration-200 hover:bg-indigo-700 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 md:w-auto md:px-5">
                             Save Settings
                         </button>
                     </div>

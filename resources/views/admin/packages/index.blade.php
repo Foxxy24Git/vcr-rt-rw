@@ -1,29 +1,29 @@
 <x-dashboard-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between">
-            <h2 class="text-xl font-semibold leading-tight text-gray-800">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h2 class="text-lg font-semibold leading-tight text-gray-800 sm:text-xl">
                 Master Paket Internet
             </h2>
 
             <a
                 href="{{ route('admin.packages.create') }}"
-                class="rounded-xl bg-rootPrimary px-4 py-2 text-sm font-medium text-white hover:bg-rootIndigo"
+                class="inline-block w-full rounded-xl bg-rootPrimary px-4 py-2 text-center text-sm font-medium text-white shadow-sm transition duration-200 hover:bg-rootIndigo hover:shadow-md md:w-auto"
             >
                 + Tambah Paket
             </a>
         </div>
     </x-slot>
 
-    <div class="py-8">
-        <div class="mx-auto max-w-7xl space-y-4 sm:px-6 lg:px-8">
+    <div class="py-4 sm:py-6 md:py-8">
+        <div class="mx-auto max-w-7xl space-y-4 px-3 sm:px-6 lg:px-8">
             @if (session('status'))
                 <div class="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
                     {{ session('status') }}
                 </div>
             @endif
 
-            <div class="rounded-lg bg-white p-4 shadow-sm">
-                <form method="GET" action="{{ route('admin.packages.index') }}" class="grid gap-3 md:grid-cols-3">
+            <div class="rounded-lg bg-white p-4 shadow-sm transition-shadow duration-200 hover:shadow-md md:p-6">
+                <form method="GET" action="{{ route('admin.packages.index') }}" class="grid grid-cols-1 gap-3 md:grid-cols-3">
                     <div>
                         <x-input-label for="search" value="Cari Kode/Nama" />
                         <x-text-input id="search" name="search" type="text" class="mt-1 block w-full" :value="$search" />
@@ -38,55 +38,55 @@
                         </select>
                     </div>
 
-                    <div class="flex items-end gap-2">
-                        <button type="submit" class="rounded-xl bg-rootPrimary px-4 py-2 text-sm text-white hover:bg-rootIndigo">
+                    <div class="flex flex-wrap items-end gap-2">
+                        <button type="submit" class="w-full rounded-xl bg-rootPrimary px-4 py-2 text-sm text-white shadow-sm transition duration-200 hover:bg-rootIndigo hover:shadow-md md:w-auto">
                             Filter
                         </button>
-                        <a href="{{ route('admin.packages.index') }}" class="rounded-xl border border-rootPrimary px-4 py-2 text-sm text-rootPrimary hover:bg-rootPink/20">
+                        <a href="{{ route('admin.packages.index') }}" class="w-full rounded-xl border border-rootPrimary px-4 py-2 text-center text-sm text-rootPrimary transition duration-200 hover:bg-rootPink/20 md:w-auto">
                             Reset
                         </a>
                     </div>
                 </form>
             </div>
 
-            <div class="overflow-hidden rounded-xl bg-white shadow-sm">
+            <div class="overflow-hidden rounded-xl bg-white shadow-sm transition-shadow duration-200 hover:shadow-md">
                 <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200 text-sm">
+                    <table class="min-w-full divide-y divide-gray-200 text-xs sm:text-sm">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th class="px-4 py-3 text-left font-semibold text-gray-700">Kode</th>
-                                <th class="px-4 py-3 text-left font-semibold text-gray-700">Nama</th>
-                                <th class="px-4 py-3 text-left font-semibold text-gray-700">Harga</th>
-                                <th class="px-4 py-3 text-left font-semibold text-gray-700">Masa Aktif</th>
-                                <th class="px-4 py-3 text-left font-semibold text-gray-700">Status</th>
-                                <th class="px-4 py-3 text-right font-semibold text-gray-700">Aksi</th>
+                                <th class="px-3 py-2 text-left font-semibold text-gray-700 sm:px-4 sm:py-3">Kode</th>
+                                <th class="px-3 py-2 text-left font-semibold text-gray-700 sm:px-4 sm:py-3">Nama</th>
+                                <th class="px-3 py-2 text-left font-semibold text-gray-700 sm:px-4 sm:py-3">Harga</th>
+                                <th class="px-3 py-2 text-left font-semibold text-gray-700 sm:px-4 sm:py-3">Masa Aktif</th>
+                                <th class="px-3 py-2 text-left font-semibold text-gray-700 sm:px-4 sm:py-3">Status</th>
+                                <th class="px-3 py-2 text-right font-semibold text-gray-700 sm:px-4 sm:py-3">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100 bg-white">
                             @forelse ($packages as $package)
                                 <tr>
-                                    <td class="px-4 py-3 font-medium text-gray-900">{{ $package->code }}</td>
-                                    <td class="px-4 py-3">
+                                    <td class="px-3 py-2 font-medium text-gray-900 sm:px-4 sm:py-3">{{ $package->code }}</td>
+                                    <td class="px-3 py-2 sm:px-4 sm:py-3">
                                         <p class="font-medium text-gray-900">{{ $package->name }}</p>
                                         <p class="text-xs text-gray-500">
                                             DL {{ $package->bandwidth_down_kbps ?? '-' }} Kbps ·
                                             UL {{ $package->bandwidth_up_kbps ?? '-' }} Kbps
                                         </p>
                                     </td>
-                                    <td class="px-4 py-3 text-gray-700">
+                                    <td class="px-3 py-2 text-gray-700 sm:px-4 sm:py-3">
                                         Rp {{ number_format((float) $package->price, 2, ',', '.') }}
                                     </td>
-                                    <td class="px-4 py-3 text-gray-700">
+                                    <td class="px-3 py-2 text-gray-700 sm:px-4 sm:py-3">
                                         {{ $package->validity_value }} {{ $package->validity_unit }}
                                     </td>
-                                    <td class="px-4 py-3">
+                                    <td class="px-3 py-2 sm:px-4 sm:py-3">
                                         <x-status-badge :status="$package->is_active ? 'Aktif' : 'Nonaktif'" />
                                     </td>
-                                    <td class="px-4 py-3">
-                                        <div class="flex justify-end gap-2">
+                                    <td class="px-3 py-2 sm:px-4 sm:py-3">
+                                        <div class="flex flex-wrap justify-end gap-1 sm:gap-2">
                                             <a
                                                 href="{{ route('admin.packages.edit', $package) }}"
-                                                class="rounded-xl border border-rootPrimary px-3 py-1.5 text-xs font-medium text-rootPrimary hover:bg-rootPink/20"
+                                                class="rounded-xl border border-rootPrimary px-2 py-1.5 text-xs font-medium text-rootPrimary transition duration-200 hover:bg-rootPink/20 sm:px-3"
                                             >
                                                 Edit
                                             </a>
@@ -96,7 +96,7 @@
                                                 @method('PATCH')
                                                 <button
                                                     type="submit"
-                                                    class="rounded-xl px-3 py-1.5 text-xs font-medium {{ $package->is_active ? 'bg-red-50 text-red-700 border border-red-200 hover:bg-red-100' : 'bg-rootPrimary text-white hover:bg-rootIndigo' }}"
+                                                    class="rounded-xl px-2 py-1.5 text-xs font-medium transition duration-200 sm:px-3 {{ $package->is_active ? 'border border-red-200 bg-red-50 text-red-700 hover:bg-red-100' : 'bg-rootPrimary text-white hover:bg-rootIndigo' }}"
                                                 >
                                                     {{ $package->is_active ? 'Nonaktifkan' : 'Aktifkan' }}
                                                 </button>
@@ -106,7 +106,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="px-4 py-8 text-center text-gray-500">
+                                    <td colspan="6" class="px-3 py-6 text-center text-sm text-gray-500 sm:px-4 sm:py-8">
                                         Belum ada paket internet.
                                     </td>
                                 </tr>
@@ -115,7 +115,7 @@
                     </table>
                 </div>
 
-                <div class="border-t border-gray-100 px-4 py-3">
+                <div class="border-t border-gray-100 px-3 py-3 sm:px-4">
                     {{ $packages->links() }}
                 </div>
             </div>

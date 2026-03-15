@@ -10,9 +10,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="bg-gray-100 min-h-screen flex items-center justify-center font-sans text-gray-900 antialiased">
-        <div class="max-w-md mx-auto mt-24 w-full px-4">
-            <div class="bg-white rounded-xl shadow-md p-8">
-                <img src="/images/logo.png" alt="App Logo" class="mx-auto mb-6 h-16">
+        <div class="mx-auto mt-12 w-full max-w-md px-4 sm:mt-16 md:mt-24">
+            <div class="rounded-xl bg-white p-4 shadow-md transition-shadow duration-200 hover:shadow-lg sm:rounded-xl md:p-6 lg:p-8">
+                <img src="/images/logo.png" alt="App Logo" class="mx-auto mb-4 h-12 sm:mb-6 sm:h-16">
 
                 @if (session('status'))
                     <div class="mb-4 rounded-lg bg-green-50 px-4 py-3 text-sm text-green-700">
@@ -84,7 +84,7 @@
 
                     <button
                         type="submit"
-                        class="mt-6 w-full rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition hover:bg-green-700"
+                        class="mt-6 w-full rounded-lg bg-green-600 px-4 py-3 font-semibold text-white shadow-sm transition duration-200 hover:bg-green-700 hover:shadow-md md:w-auto md:px-6"
                     >
                         LOG IN
                     </button>

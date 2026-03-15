@@ -11,8 +11,8 @@
         </div>
     </x-slot>
 
-    <div class="py-8">
-        <div class="mx-auto max-w-7xl space-y-4 sm:px-6 lg:px-8">
+    <div class="py-4 sm:py-6 md:py-8">
+        <div class="mx-auto max-w-7xl space-y-4 px-3 sm:px-6 lg:px-8">
             @if (session('status'))
                 <div class="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
                     {{ session('status') }}
