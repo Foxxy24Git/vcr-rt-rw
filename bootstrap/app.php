@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\EnsureUserRole;
+use Illuminate\Session\TokenMismatchException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -17,5 +18,10 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->render(function (TokenMismatchException $exception, $request) {
+            return redirect()
+                ->back()
+                ->withInput($request->except('_token', 'password', 'password_confirmation'))
+                ->with('error', 'Sesi Anda telah berakhir. Silakan coba lagi.');
+        });
     })->create();

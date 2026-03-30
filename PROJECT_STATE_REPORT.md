@@ -6,6 +6,24 @@
 
 ---
 
+## 0. LATEST UPDATES (MAR 2026)
+
+- **Timezone synchronization for voucher generation:**
+  - App timezone is now configurable via environment variable: `APP_TIMEZONE`.
+  - Default timezone changed from `UTC` to `Asia/Jakarta` in `config/app.php`.
+  - Impact: voucher timestamps (`generated_at`, `paid_at`, and related `now()` usages) are aligned with server/app local operational time.
+
+- **Improved CSRF/session expiry handling (419 fix):**
+  - Added centralized exception rendering for `TokenMismatchException` in `bootstrap/app.php`.
+  - Instead of hard-failing to Laravel default 419 page, the app now redirects back with safe input restoration and a session-expired message.
+  - Impact: better user recovery flow for expired session/token scenarios during form submissions.
+
+- **Model header fatal error fix:**
+  - Cleaned `app/Models/User.php` header so namespace declaration starts correctly at file beginning (`<?php` followed by `namespace App\Models;`).
+  - Impact: resolves fatal error `Namespace declaration statement has to be the very first statement`.
+
+---
+
 ## 1. PROJECT OVERVIEW
 
 This is a **Laravel (Breeze) web application** for managing hotspot vouchers in an RT/RW (neighbourhood) network context. The system supports:
